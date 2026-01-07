@@ -8,19 +8,19 @@ const teamMembers = [
         id: 1,
         name: 'Jonel Curay',
         role: 'Developer',
-        photo: null, // Replace with require('./path/to/photo.jpg') when available
+        photo: require('../../assets/team/jonel.jpg'),
     },
     {
         id: 2,
         name: 'Erick Vince Estabillo',
         role: 'Developer',
-        photo: null,
+        photo: require('../../assets/team/erick.jpg'),
     },
     {
         id: 3,
         name: 'Verwin Gonzales',
         role: 'Developer',
-        photo: null,
+        photo: require('../../assets/team/verwin.png'),
     },
 ];
 
@@ -159,13 +159,13 @@ const styles = StyleSheet.create({
     },
     teamGrid: {
         flexDirection: 'column',
-        gap: 16,
     },
     memberCard: {
         backgroundColor: '#252525',
         borderRadius: 16,
         padding: 20,
         alignItems: 'center',
+        marginBottom: 16,
     },
     photoContainer: {
         marginBottom: 12,

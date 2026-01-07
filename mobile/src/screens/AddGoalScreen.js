@@ -21,7 +21,7 @@ const AddGoalScreen = () => {
             showNotification('New goal created successfully');
         }
         // Navigate back to Home or show success
-        navigation.navigate('Home');
+        navigation.navigate('HomeTab');
     };
 
     return (

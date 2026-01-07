@@ -8,7 +8,6 @@ import { NotificationProvider, useNotification } from './src/context/Notificatio
 import Toast from './src/components/Toast';
 
 // Screens
-import HomeScreen from './src/screens/HomeScreen';
 import AddGoalScreen from './src/screens/AddGoalScreen';
 import StatsScreen from './src/screens/StatsScreen';
 import SettingsStack from './src/navigation/SettingsStack';
