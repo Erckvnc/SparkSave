@@ -11,7 +11,7 @@ import Toast from './src/components/Toast';
 import HomeScreen from './src/screens/HomeScreen';
 import AddGoalScreen from './src/screens/AddGoalScreen';
 import StatsScreen from './src/screens/StatsScreen';
-import SettingsScreen from './src/screens/SettingsScreen';
+import SettingsStack from './src/navigation/SettingsStack';
 import HomeStack from './src/navigation/HomeStack';
 
 const Tab = createBottomTabNavigator();
@@ -76,7 +76,7 @@ export default function App() {
                 />
                 <Tab.Screen
                   name="Settings"
-                  component={SettingsScreen}
+                  component={SettingsStack}
                   options={{
                     tabBarIcon: ({ color, size }) => (
                       <StartIcon color={color} size={size} icon="⚙️" />

@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert, Switch } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Switch } from 'react-native';
 import Header from '../components/Header';
 import Constants from 'expo-constants';
 import { useGoals } from '../context/GoalsContext';
 import { useNotification } from '../context/NotificationContext';
 import ConfirmationModal from '../components/ConfirmationModal';
+import { useNavigation } from '@react-navigation/native';
 
 const SettingsScreen = () => {
     const { goals, deleteGoal, clearAllGoals } = useGoals();
     const { showNotification } = useNotification();
     const [modalVisible, setModalVisible] = useState(false);
+    const navigation = useNavigation();
 
     const handleClearDataPress = () => {
         setModalVisible(true);
@@ -25,7 +27,7 @@ const SettingsScreen = () => {
     };
 
     const handleAbout = () => {
-        Alert.alert('SparkSave', 'Version 1.0.0\nDeveloped with React Native');
+        navigation.navigate('About');
     };
 
     const [notificationsEnabled, setNotificationsEnabled] = useState(true);
