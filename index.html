@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="SparkSave - Track your savings goals with energy. The premium way to save for your future.">
+    <title>SparkSave - Ignite Your Savings Potential</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">SparkSave</span>
+            </div>
+            <button class="header-profile-btn" id="header-profile" title="Profile">
+                <span class="profile-icon">👤</span>
+            </button>
+        </header>
+
+        <!-- Stats Card -->
+        <div class="stats-card">
+            <div class="stats-content">
+                <div class="stat-item">
+                    <span class="stat-label">Total Saved</span>
+                    <span class="stat-value" id="total-saved">₱0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Total Goal</span>
+                    <span class="stat-value" id="total-goal">₱0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label progress-label" id="progress-percent">0%</span>
+                    <span class="stat-subtitle">to financial freedom</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error Message Container -->
+        <div id="error-container" class="error-container hidden"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Hero Section -->
+                <section class="hero">
+                    <h1 class="hero-title">
+                        Ignite Your<br>
+                        <span class="gradient-text">Savings Potential</span>
+                    </h1>
+                    <p class="hero-subtitle">Track your goals with energy. The premium way to save for your future.</p>
+                </section>
+
+                <!-- Add Goal Form -->
+                <section class="add-goal-section">
+                    <h2 class="section-title">Add New Goal</h2>
+                    <form id="goal-form" class="goal-form">
+                        <div class="form-group">
+                            <label for="goal-name" class="form-label">Goal Name</label>
+                            <input type="text" id="goal-name" class="form-input" placeholder="e.g., Vacation Fund"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="target-amount" class="form-label">Target (₱)</label>
+                            <input type="number" id="target-amount" class="form-input" placeholder="5000" min="1"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="saved-amount" class="form-label">Saved (₱)</label>
+                            <input type="number" id="saved-amount" class="form-input" placeholder="1000" min="0"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="goal-description" class="form-label">Description (Optional)</label>
+                            <textarea id="goal-description" class="form-input form-textarea"
+                                placeholder="Add a note about this goal..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <span class="btn-icon">⚡</span>
+                            Add Goal
+                        </button>
+                    </form>
+                </section>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <section class="goals-section">
+                    <div class="goals-header">
+                        <h2 class="section-title-light">Your Savings Goals</h2>
+                        <div class="goals-filter">
+                            <select id="history-sort" class="sort-select hidden">
+                                <option value="recent">Recent</option>
+                                <option value="highest">Highest</option>
+                                <option value="lowest">Lowest</option>
+                            </select>
+                            <button class="filter-btn active" id="view-active">Active</button>
+                            <button class="filter-btn" id="view-history">History</button>
+                        </div>
+                    </div>
+                    <div id="goals-container" class="goals-container">
+                        <!-- Goals will be dynamically added here -->
+                    </div>
+                    <div id="empty-state" class="empty-state">
+                        <span class="empty-icon">🎯</span>
+                        <p>No goals yet. Add your first savings goal!</p>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Celebration Modal -->
+    <div id="celebration-modal" class="modal-overlay">
+        <div class="modal-content celebration-content">
+            <div class="confetti-container" id="confetti-container"></div>
+            <div class="celebration-header">
+                <span class="celebration-icon">🎉</span>
+                <h2>Goal Achieved!</h2>
+            </div>
+            <div class="celebration-body">
+                <p>Congratulations! You've reached your goal:</p>
+                <h3 id="celebration-goal-name">Goal Name</h3>
+                <div class="celebration-amount" id="celebration-amount">₱0</div>
+                <p>You're a saving superstar! 🌟</p>
+                <button class="celebration-btn" id="close-celebration">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation Footer -->
+    <nav class="bottom-nav">
+        <button class="nav-btn active" data-page="home" id="nav-home">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Home</span>
+        </button>
+        <button class="nav-btn" data-page="add" id="nav-add">
+            <span class="nav-icon">➕</span>
+            <span class="nav-label">Add Goal</span>
+        </button>
+        <button class="nav-btn" data-page="stats" id="nav-stats">
+            <span class="nav-icon">📊</span>
+            <span class="nav-label">Stats</span>
+        </button>
+        <button class="nav-btn" data-page="settings" id="nav-settings">
+            <span class="nav-icon">⚙️</span>
+            <span class="nav-label">Settings</span>
+        </button>
+    </nav>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
